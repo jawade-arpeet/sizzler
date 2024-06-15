@@ -1,17 +1,26 @@
+import { foodCategoriesImages } from "@/utils/constants";
+import { cn } from "@/utils/utils";
+
 const Categories = () => {
   return (
     <section
       className={
-        "flex gap-x-3 items-center md:justify-center px-6 py-12 overflow-y-scroll w-full"
+        "px-6 lg:px-12 lg:gap-x-8 py-12 flex gap-x-3 items-center overflow-x-scroll mx-auto no-scrollbar"
       }
     >
-      <div
-        className={
-          "bg-orange-500 h-36 w-36 rounded-full flex flex-col items-center justify-center"
-        }
-      >
-        <p>AMERICAN</p>
-      </div>
+      {foodCategoriesImages.map((img) => {
+        return (
+          <div
+            key={img.id}
+            style={{ backgroundImage: `url(${img.src})` }}
+            className={cn(
+              "h-40 w-40 rounded-full flex flex-col items-center justify-center shrink-0 shadow-2xl",
+            )}
+          >
+            <p className={"text-zinc-50"}>{img.label}</p>
+          </div>
+        );
+      })}
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { login } from "@/app/actions/action";
 
 function Login() {
   return (
@@ -21,7 +22,12 @@ function Login() {
         </p>
       </div>
       <form
-        className={"max-w-80 mx-auto flex flex-col items-center gap-y-1 mt-3"}
+        action={async (formData) => {
+          "use server";
+          const res = await login(formData);
+          console.log(res);
+        }}
+         className={"max-w-80 mx-auto flex flex-col items-center gap-y-1 mt-3"}
       >
         <Input placeholder={"Email"} type={"email"} name={"email"} />
         <Input placeholder={"Password"} type={"password"} name={"password"} />

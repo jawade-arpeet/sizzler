@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { signUp } from "@/app/actions/action";
 
 function SignUp() {
   return (
@@ -21,6 +22,7 @@ function SignUp() {
         </p>
       </div>
       <form
+        action={signUp}
         className={"max-w-80 mx-auto flex flex-col items-center gap-y-1 mt-3"}
       >
         <Input placeholder={"First Name"} type={"text"} name={"firstName"} />
