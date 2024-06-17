@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className={"px-8 py-6 lg:px-12 shadow "}>
       <nav className={"flex items-center justify-between "}>
-        <Link href={"/"} className={"text-2xl font-semibold"}>
+        <Link href={"/"} className={"text-2xl font-semibold w-1/3"}>
           sizzler
         </Link>
         <div className={"*:inline space-x-5"}>

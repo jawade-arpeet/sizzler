@@ -1,28 +1,37 @@
-import { foodCategoriesImages } from "@/utils/constants";
 import { cn } from "@/utils/utils";
+import prisma from "../../../db";
+import Link from "next/link";
 
-const Categories = () => {
+async function fetchCategories() {
+  const res = await prisma.categories.findMany();
+  console.log(res);
+  return res;
+}
+async function Categories() {
+  const categories = await fetchCategories();
   return (
     <section
       className={
         "px-6 lg:px-12 lg:gap-x-8 py-12 flex gap-x-3 items-center overflow-x-scroll mx-auto no-scrollbar"
       }
     >
-      {foodCategoriesImages.map((img) => {
+      {categories.map((category) => {
         return (
           <div
-            key={img.id}
-            style={{ backgroundImage: `url(${img.src})` }}
+            key={category.id}
+            style={{ backgroundImage: `url(${category.imgSrc})` }}
             className={cn(
               "h-40 w-40 rounded-full flex flex-col items-center justify-center shrink-0 shadow-2xl",
             )}
           >
-            <p className={"text-zinc-50"}>{img.label}</p>
+            <Link href={`/${category.id}`} className={"text-zinc-50 text-xl"}>
+              {category.name}
+            </Link>
           </div>
         );
       })}
     </section>
   );
-};
+}
 
 export { Categories };

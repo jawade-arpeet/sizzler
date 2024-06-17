@@ -7,7 +7,7 @@ function Card({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("", className)} {...props}>
+    <div className={cn("rounded-md px-4 py-6 border", className)} {...props}>
       {children}
     </div>
   );
@@ -25,4 +25,16 @@ function CardContent({
   );
 }
 
-export { Card, CardContent };
+function CardFooter({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div className={cn("", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
+export { Card, CardContent, CardFooter };

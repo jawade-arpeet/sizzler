@@ -1,12 +1,12 @@
-import { Header } from "@/components/home/header";
 import { Categories } from "@/components/home/categories";
 import { Footer } from "@/components/home/footer";
+import { Popular } from "@/components/home/popular";
 
 export default function Homepage() {
   return (
     <main>
-      <Header />
       <Categories />
+      <Popular />
       <Footer />
     </main>
   );
