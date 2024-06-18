@@ -9,7 +9,7 @@ function Footer() {
   return (
     <footer
       className={
-        "px-8 py-16 space-y-3 max-w-screen-xl flex flex-col items-center mx-auto"
+        "px-8 py-16 space-y-3 max-w-screen-xl  flex flex-col items-center mx-auto"
       }
     >
       <Link href="/" className={"text-4xl font-semibold"}>
