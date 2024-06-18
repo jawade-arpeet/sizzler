@@ -13,7 +13,16 @@ async function fetchRecipe(recipeId: string) {
       imgSrc: true,
       prepTime: true,
       cookTime: true,
-      instructions: true,
+      instructions: {
+        select: {
+          id: true,
+          stepOrder: true,
+          instruction: true,
+        },
+        orderBy: {
+          stepOrder: "asc",
+        },
+      },
       user: {
         select: {
           firstName: true,
@@ -71,16 +80,18 @@ async function RecipePage({
         </Button>
         <div className={"mt-6"}>
           <h1 className={"text-3xl font-semibold"}>Instructions</h1>
-          {
-            <div key={recipe.id} className={"flex flex-col gap-y-3 mt-6"}>
-              {Object.entries(recipe.instructions).map(([key, value]) => (
-                <div key={key}>
-                  <h1 className={"font-semibold capitalize"}>{key}</h1>
-                  <p>{value}</p>
+          <div className={"flex flex-col gap-y-6"}>
+            {recipe.instructions.map((instruction) => {
+              return (
+                <div key={instruction.id}>
+                  <h6 className={"text-lg font-semibold"}>
+                    Step {instruction.stepOrder}
+                  </h6>
+                  <p>{instruction.instruction}</p>
                 </div>
-              ))}
-            </div>
-          }
+              );
+            })}
+          </div>
         </div>
       </section>
     );

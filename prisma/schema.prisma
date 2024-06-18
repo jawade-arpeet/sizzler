@@ -22,17 +22,25 @@ model Ingredient {
 }
 
 model Recipe {
-  id           String     @id @default(cuid())
+  id           String               @id @default(cuid())
   userId       String
   categoryId   String
   name         String
   description  String
-  instructions Json
   prepTime     String
   cookTime     String
   imgSrc       String
-  user         User       @relation(fields: [userId], references: [id])
-  category     Categories @relation(fields: [categoryId], references: [id])
+  instructions RecipeInstructions[]
+  user         User                 @relation(fields: [userId], references: [id])
+  category     Categories           @relation(fields: [categoryId], references: [id])
+}
+
+model RecipeInstructions {
+  id          String @id @default(cuid())
+  recipeId    String
+  stepOrder   Int    @default(1)
+  instruction String
+  Recipe      Recipe @relation(fields: [recipeId], references: [id])
 }
 
 model Categories {

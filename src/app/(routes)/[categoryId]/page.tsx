@@ -32,7 +32,7 @@ async function RecipeHomePage({
   const category = await fetchCategory(categoryId);
   return (
     <section className={"px-4 py-6 max-w-screen-md mx-auto"}>
-      <h1 className={"font-semibold text-4xl"}>{category.name}</h1>
+      <h1 className={"font-semibold text-4xl"}>{category?.name}</h1>
       <div
         className={
           "mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-6"
